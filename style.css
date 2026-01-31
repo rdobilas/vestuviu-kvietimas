@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+:root {
+  --font-amatic-bold: "Amatic SC", sans-serif;
+}
+
+.amatic-sc-bold {
+  font-family: var(--font-amatic-bold);
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "EB Garamond", serif;
+  background-color: #f6f2e9;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+/* Kiekviena sekcija fono paveikslėlis */
+/* .hero {
+  background-image: url("images/hero-bg.jpg");
+  background-size: 250%;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 30px 20px;
+} */
+
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 30px 20px;
+  overflow: hidden; /* kad paveiksliukas neišeitų už hero ribų */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("images/hero-bg.jpg");
+  background-size: cover; /* visada užpildo */
+  background-position: center; /* centras horizontaliai */
+  transform: scale(1.22) translateY(8%); /* truputį zoom ir nuleidimas */
+  z-index: -1;
+}
+
+.hero__title {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.hero__title img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.hero__photo {
+  max-width: 380px;
+  margin: 10px auto;
+}
+
+.hero__photo img {
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.hero p {
+  font-family: var(--font-amatic-bold);
+  font-size: 20px;
+}
+
+.invite {
+  background-image: url("images/invite-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 40px 20px;
+  color: #333;
+}
+
+.location {
+  background-image: url("images/location-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 40px 20px;
+  color: #333;
+}
+
+.rsvp {
+  background-image: url("images/rsvp-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 40px 20px;
+  color: #333;
+}
+
+.countdown {
+  background-image: url("images/countdown-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 40px 20px;
+  color: #333;
+}
+
+@media (min-width: 768px) {
+  .hero::before {
+    transform: scale(1.2) translateY(8%);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero::before {
+    transform: scale(1.2) translateY(8%);
+  }
+  .hero__title {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .hero__photo {
+    max-width: 420px;
+    margin: 10px auto;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero::before {
+    transform: scale(1) translateY(0%);
+  }
+}
