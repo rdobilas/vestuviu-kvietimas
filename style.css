@@ -2,10 +2,22 @@
 
 :root {
   --font-amatic-bold: "Amatic SC", sans-serif;
+  --font-sc-regular: "Courier Prime", monospace;
+  --font-sc-bold: "Courier Prime", monospace;
 }
 
 .amatic-sc-bold {
   font-family: var(--font-amatic-bold);
+  font-weight: 700;
+  font-style: normal;
+}
+.courier-prime-regular {
+  font-family: "Courier Prime", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+.courier-prime-bold {
+  font-family: "Courier Prime", monospace;
   font-weight: 700;
   font-style: normal;
 }
@@ -25,23 +37,13 @@ body {
   margin: 0 auto;
 }
 
-/* Kiekviena sekcija fono paveikslėlis */
-/* .hero {
-  background-image: url("images/hero-bg.jpg");
-  background-size: 250%;
-  background-position: center 0;
-  background-repeat: no-repeat;
-  text-align: center;
-  padding: 30px 20px;
-} */
-
+/* 1. Hero */
 .hero {
   position: relative;
   text-align: center;
-  padding: 30px 20px;
-  overflow: hidden; /* kad paveiksliukas neišeitų už hero ribų */
+  padding: 30px 20px 20px 20px;
+  overflow: hidden;
 }
-
 .hero::before {
   content: "";
   position: absolute;
@@ -50,9 +52,9 @@ body {
   width: 100%;
   height: 100%;
   background-image: url("images/hero-bg.jpg");
-  background-size: cover; /* visada užpildo */
-  background-position: center; /* centras horizontaliai */
-  transform: scale(1.22) translateY(8%); /* truputį zoom ir nuleidimas */
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.22) translateY(8%);
   z-index: -1;
 }
 
@@ -83,17 +85,83 @@ body {
 .hero p {
   font-family: var(--font-amatic-bold);
   font-size: 20px;
+  margin-bottom: 20px;
 }
 
+.hero__verse {
+  margin: 0 auto;
+  width: 100%;
+  background-color: #f6f2e9;
+  padding: 20px;
+  font-family: var(--font-sc-regular);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  max-width: 591px;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 2. Invite */
 .invite {
+  position: relative;
+  text-align: center;
+  padding: 60px 10px;
+  color: #333;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.invite::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
   background-image: url("images/invite-bg.jpg");
   background-size: cover;
   background-position: center;
-  text-align: center;
-  padding: 40px 20px;
-  color: #333;
+  transform: scale(1.05);
+  z-index: -1;
 }
 
+.invite__img {
+  position: relative;
+  max-width: 420px;
+  transform: rotate(-1deg);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.invite__img img {
+  width: 90%;
+  height: auto;
+  display: block;
+}
+
+.invite__clippy {
+  position: absolute;
+  top: -7%;
+  right: 5%;
+
+  width: 22%;
+  aspect-ratio: 1 / 1;
+
+  background-image: url("images/clipy.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  z-index: 2;
+}
+
+/* 3. Location */
 .location {
   background-image: url("images/location-bg.jpg");
   background-size: cover;
@@ -103,6 +171,7 @@ body {
   color: #333;
 }
 
+/* 4. RSVP */
 .rsvp {
   background-image: url("images/rsvp-bg.jpg");
   background-size: cover;
@@ -112,6 +181,7 @@ body {
   color: #333;
 }
 
+/* 5. Countdown */
 .countdown {
   background-image: url("images/countdown-bg.jpg");
   background-size: cover;
