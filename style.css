@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@font-face {
+  font-family: "Beautifully Delicious";
+  src: url("fonts/BDScript-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
   --font-amatic-bold: "Amatic SC", sans-serif;
@@ -41,7 +47,7 @@ body {
 .hero {
   position: relative;
   text-align: center;
-  padding: 30px 20px 20px 20px;
+  padding: 40px 20px 20px 20px;
   overflow: hidden;
 }
 .hero::before {
@@ -54,20 +60,29 @@ body {
   background-image: url("images/hero-bg.jpg");
   background-size: cover;
   background-position: center;
-  transform: scale(1.22) translateY(8%);
+  transform: scale(1.2) translateY(8%);
   z-index: -1;
 }
 
 .hero__title {
   max-width: 650px;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
+}
+
+.hero__title h2 {
+  font-family: "Beautifully Delicious", cursive;
+  font-size: 64px;
+  font-weight: 100;
+  line-height: 40px;
+  transform: rotate(-5deg);
 }
 
 .hero__title img {
-  width: 100%;
+  width: 150px;
   height: auto;
   display: block;
-  margin: 0 auto;
+  margin: 5px auto 0 auto;
+  transform: translateX(8%);
 }
 
 .hero__photo {
@@ -169,6 +184,50 @@ body {
   text-align: center;
   padding: 40px 20px;
   color: #333;
+}
+
+.location__title {
+  margin-bottom: 15px;
+}
+
+.location__title h2 {
+  font-family: "Beautifully Delicious", cursive;
+  font-size: 54px;
+  font-weight: 100;
+  line-height: 25px;
+  transform: rotate(-10deg);
+}
+
+.location__title img {
+  width: 75px;
+  height: auto;
+  display: block;
+  margin: 0px auto 0 auto;
+  transform: translateX(8%);
+  transform: rotate(-10deg);
+}
+
+.details {
+  font-family: var(--font-amatic-bold);
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+
+.location__images {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.address {
+  font-family: var(--font-amatic-bold);
+  font-size: 14px;
+}
+
+.location--church img,
+.location--venue img {
+  width: 70%;
 }
 
 /* 4. RSVP */
