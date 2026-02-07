@@ -326,10 +326,34 @@ body {
   font-weight: 400;
   cursor: pointer;
   display: inline-block;
+}
+.rsvp__btn {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+
+  padding: 12px 22px;
+  font-size: 18px;
+
+  --btn-main: #948062;
+  --btn-hover: #8a785e;
+  --btn-active: #7a6a52;
+  --btn-text: #f6f2e9;
+
+  background: var(--btn-main);
+  color: var(--btn-text);
+  border: none;
+  font-family: var(--font-sc-regular, serif);
+  letter-spacing: 0.6px;
+  border-radius: 999px;
+  font-weight: 400;
+  cursor: pointer;
+  display: inline-block;
 
   transition:
-    transform 0.18s ease,
-    box-shadow 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.1s ease,
     background 0.2s ease;
 
   /* 🌫 Subtilus „pakeltas nuo popieriaus“ šešėlis */
@@ -362,6 +386,34 @@ body {
   outline-offset: 3px;
 }
 
+/* HOVER – labai švelnus pakilimas */
+.rsvp__btn:hover {
+  background: var(--btn-hover);
+  transform: translateX(-50%) translateY(-2px) rotate(-1.5deg);
+  box-shadow:
+    0 6px 14px rgba(148, 128, 98, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* ACTIVE – aiškus „paspaudimas“ */
+.rsvp__btn:active {
+  background: var(--btn-active);
+  transform: translateX(-50%) translateY(2px) rotate(-1.5deg); /* pasimeta žemyn */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); /* subtilesnis shadow */
+}
+
+/* Mobile-friendly: užtikrinti, kad :active veiktų ir ant touch įrenginių */
+.rsvp__btn {
+  -webkit-tap-highlight-color: transparent; /* pašalina default iOS „flash“ */
+  touch-action: manipulation; /* pagerina click/tap response */
+}
+
+/* Accessibility (keyboard focus) */
+.rsvp__btn:focus-visible {
+  outline: 2px solid #b8a485;
+  outline-offset: 3px;
+}
+
 /* APAČIOS FOTO (kol kas mobile centre) */
 .rsvp__picture img {
   width: 85%;
@@ -377,7 +429,7 @@ body {
   background-size: cover;
   background-position: center;
   text-align: center;
-  padding: 40px 40px;
+  padding: 20px 20px;
   color: #333;
 }
 
