@@ -57,7 +57,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("images/hero-bg.jpg");
+  background-image: url("images/hero-bg.png");
   background-size: cover;
   background-position: center;
   transform: scale(1.2) translateY(8%);
@@ -138,7 +138,7 @@ body {
   width: 100%;
   height: 100%;
 
-  background-image: url("images/invite-bg.jpg");
+  background-image: url("images/invite-bg.png");
   background-size: cover;
   background-position: center;
   transform: scale(1.05);
@@ -178,7 +178,7 @@ body {
 
 /* 3. Location */
 .location {
-  background-image: url("images/location-bg.jpg");
+  background-image: url("images/location-bg.png");
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -228,26 +228,208 @@ body {
 .location--church img,
 .location--venue img {
   width: 70%;
+  max-width: 420px;
 }
 
 /* 4. RSVP */
 .rsvp {
-  background-image: url("images/rsvp-bg.jpg");
+  background-image: url("images/rsvp-bg.png");
   background-size: cover;
   background-position: center;
   text-align: center;
-  padding: 40px 20px;
   color: #333;
+}
+
+.rsvp__card-wrapper {
+  position: relative; /* <- čia clippy ir mygtukas prisiriš */
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* KONTEINERIS */
+.rsvp__sea {
+  position: relative;
+  width: 100%;
+  /* max-width: 420px; */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* kad fonas neišeitų už konteinerio */
+  padding: 60px 0;
+}
+
+.rsvp__sea::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("images/rsvp-sea.png");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+/* KORTELĖ ANT VIRŠAUS – rsvp.jpg */
+.rsvp__card {
+  width: 90%; /* ne 100%, kad nesiplėstų per plotį */
+  max-width: 400px; /* apribojimas */
+  height: auto;
+  transform: rotate(-1.5deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  display: block;
+  margin: 0 auto;
+}
+
+/* CLIPPY PRILIPĘS PRIE KORTELĖS */
+.rsvp__clippy {
+  position: absolute;
+  top: -7%;
+  left: 0;
+
+  width: 22%;
+  aspect-ratio: 1 / 1;
+
+  background-image: url("images/clipy.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  z-index: 2;
+}
+
+/* MYGTUKAS */
+.rsvp__btn {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+
+  padding: 12px 22px;
+  font-size: 18px;
+
+  --btn-main: #948062;
+  --btn-hover: #8a785e;
+  --btn-active: #7a6a52;
+  --btn-text: #f6f2e9;
+
+  background: var(--btn-main);
+  color: var(--btn-text);
+  border: none;
+  font-family: var(--font-sc-regular, serif);
+  letter-spacing: 0.6px;
+  border-radius: 999px;
+  font-weight: 400;
+  cursor: pointer;
+  display: inline-block;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+  /* 🌫 Subtilus „pakeltas nuo popieriaus“ šešėlis */
+  box-shadow:
+    0 6px 14px rgba(148, 128, 98, 0.22),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* HOVER – labai švelnus pakilimas */
+.rsvp__btn:hover {
+  background: var(--btn-hover);
+  transform: translateX(-50%) translateY(-1px) rotate(-1.5deg);
+
+  box-shadow:
+    0 8px 18px rgba(148, 128, 98, 0.28),
+    0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* ACTIVE – švelniai „prisėda“ */
+.rsvp__btn:active {
+  background: var(--btn-active);
+  transform: translateX(-50%) translateY(0) rotate(-1.5deg);
+
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Accessibility */
+.rsvp__btn:focus-visible {
+  outline: 2px solid #b8a485;
+  outline-offset: 3px;
+}
+
+/* APAČIOS FOTO (kol kas mobile centre) */
+.rsvp__picture img {
+  width: 85%;
+  max-width: 420px;
+  display: block;
+  margin: 0 auto;
+  padding: 20px 0;
 }
 
 /* 5. Countdown */
 .countdown {
-  background-image: url("images/countdown-bg.jpg");
+  background-image: url("images/location-bg.png");
   background-size: cover;
   background-position: center;
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px 40px;
   color: #333;
+}
+
+.countdown h2 {
+  font-family: var(--font-amatic-bold);
+  color: #948062;
+  margin-bottom: 20px;
+  font-weight: 100;
+  font-size: 32px;
+}
+
+#timer {
+  display: flex;
+  justify-content: center;
+  color: #948062;
+  font-size: 24px;
+  font-family: var(--font-amatic-bold);
+}
+
+.timer-grid {
+  display: flex;
+  align-items: flex-start; /* svarbu, kad kiekviena sekcija pradėtų nuo viršaus */
+  justify-content: center;
+  gap: 20px;
+}
+
+.time-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-num {
+  font-size: 32px;
+  font-weight: 100;
+  line-height: 1;
+  position: relative;
+}
+
+.time-label {
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: center;
+  font-weight: 300;
+}
+
+.time-separator {
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1;
+  display: flex;
+  align-items: center; /* centras pagal skaičių */
 }
 
 @media (min-width: 768px) {
