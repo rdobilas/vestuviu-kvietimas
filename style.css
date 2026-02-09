@@ -182,7 +182,7 @@ body {
   background-size: cover;
   background-position: center;
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px 20px 20px;
   color: #333;
 }
 
@@ -229,6 +229,19 @@ body {
 .location--venue img {
   width: 70%;
   max-width: 420px;
+}
+
+.location__extra {
+  margin: 0 auto;
+  width: 100%;
+  background-color: #f6f2e9;
+  padding: 20px;
+  font-family: var(--font-sc-regular);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  max-width: 591px;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* 4. RSVP */
