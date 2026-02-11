@@ -422,7 +422,7 @@ body {
 .countdown h2 {
   font-family: var(--font-amatic-bold);
   color: #948062;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: 100;
   font-size: 32px;
 }
