@@ -41,66 +41,59 @@ updateTimer();
 setInterval(updateTimer, 1000);
 
 // reveal anim script
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".reveal-group");
 
   sections.forEach((section) => {
-    // surenkame tik img elementus
+    const reveals = section.querySelectorAll(".reveal");
     const images = section.querySelectorAll("img");
-    let loadedCount = 0;
 
-    if (images.length === 0) {
-      // jei nėra img, paleidžiam iš karto
-      revealSection(section);
+    // funkcija, kuri animuoja elementus su greitai→lėtai efektu
+    function revealElements() {
+      reveals.forEach((el, index) => {
+        const delay = 80 * Math.pow(1.75, index); // greitai → lėtai
+        setTimeout(() => el.classList.add("visible"), delay);
+      });
     }
 
-    images.forEach((img) => {
-      if (img.complete) {
-        loadedCount++;
-      } else {
-        img.onload = img.onerror = () => {
-          loadedCount++;
-          if (loadedCount === images.length) {
-            revealSection(section);
-          }
-        };
-      }
-    });
+    // Funkcija prijungia IntersectionObserver prie sekcijos
+    function observeSection() {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              revealElements();
+              obs.unobserve(entry.target); // paleidžiam tik kartą
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+      observer.observe(section);
+    }
 
-    // jei visi paveiksliukai jau užkrauti
-    if (loadedCount === images.length) {
-      revealSection(section);
+    // Jei sekcijoje yra paveikslėlių – laukiam jų užkrovimo
+    if (images.length > 0) {
+      let loadedCount = 0;
+
+      images.forEach((img) => {
+        if (img.complete) {
+          loadedCount++;
+        } else {
+          img.onload = img.onerror = () => {
+            loadedCount++;
+            if (loadedCount === images.length) {
+              observeSection(); // pradėti stebėti, kai visi paveikslėliai užkrauti
+            }
+          };
+        }
+      });
+
+      // Jei visi paveikslėliai jau užkrauti
+      if (loadedCount === images.length) observeSection();
+    } else {
+      // jei sekcijoje nėra paveikslėlių – galima stebėti iš karto
+      observeSection();
     }
   });
-
-  function revealSection(section) {
-    const reveals = section.querySelectorAll(".reveal");
-
-    // animuojame po vieną elementą iš viršaus į apačią
-    reveals.forEach((el, index) => {
-      const delay = 80 * Math.pow(1.75, index); // greitai → lėtai
-      setTimeout(() => el.classList.add("visible"), delay);
-    });
-
-    // scroll animacijoms
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const revealsInside = entry.target.querySelectorAll(
-              ".reveal:not(.visible)",
-            );
-            revealsInside.forEach((el, idx) => {
-              const delay = 80 * Math.pow(1.75, idx);
-              setTimeout(() => el.classList.add("visible"), delay);
-            });
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 },
-    );
-
-    observer.observe(section);
-  }
 });
