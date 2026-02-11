@@ -6,7 +6,7 @@ function updateTimer() {
   const vilniusOffset = 3 * 60; // minutes
 
   // Sukuriame tikslų Vilnius laiką
-  const weddingDate = new Date(Date.UTC(2026, 7, 14, 11, 0, 0)); // 10:00 UTC = 13:00 Vilnius
+  const weddingDate = new Date(Date.UTC(2026, 7, 14, 10, 0, 0)); // 10:00 UTC = 13:00 Vilnius
   const now = new Date();
 
   // Perskaičiuojam diff milisekundėmis
