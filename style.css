@@ -470,10 +470,14 @@ body {
   }
 
   .invite {
-  padding: 80px 10px;
+    padding: 80px 10px;
   }
   .invite__img {
     max-width: 480px;
+  }
+
+  .location {
+    padding-top: 55px;
   }
 
   .location__title {
@@ -532,6 +536,20 @@ body {
   .rsvp__card {
     width: 100%;
     max-width: 580px; /* ← padidinam (buvo 480px) */
+  }
+  .countdown h2 {
+    font-size: 40px;
+  }
+  .time-num {
+    font-size: 40px;
+  }
+
+  .time-label {
+    font-size: 16px;
+  }
+
+  .time-separator {
+    font-size: 40px;
   }
 }
 
