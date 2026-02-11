@@ -29,7 +29,7 @@
 }
 
 .reveal {
-  opacity: 0; /* vis tiek paslėpta */
+  opacity: 0;
   transform: translateY(-25px);
   transition:
     opacity 0.8s ease,

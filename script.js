@@ -42,31 +42,65 @@ setInterval(updateTimer, 1000);
 
 // reveal anim script
 window.addEventListener("load", () => {
-  const items = document.querySelectorAll(".reveal");
+  const sections = document.querySelectorAll(".reveal-group");
 
-  // IntersectionObserver animacijai
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const parent = el.parentElement;
-          const siblings = Array.from(parent.querySelectorAll(".reveal"));
-          const index = siblings.indexOf(el);
+  sections.forEach((section) => {
+    // surenkame tik img elementus
+    const images = section.querySelectorAll("img");
+    let loadedCount = 0;
 
-          // Delay efektas: greitai -> lėtai
-          const delay = 80 * Math.pow(1.75, index);
+    if (images.length === 0) {
+      // jei nėra img, paleidžiam iš karto
+      revealSection(section);
+    }
 
-          setTimeout(() => {
-            el.classList.add("visible");
-          }, delay);
+    images.forEach((img) => {
+      if (img.complete) {
+        loadedCount++;
+      } else {
+        img.onload = img.onerror = () => {
+          loadedCount++;
+          if (loadedCount === images.length) {
+            revealSection(section);
+          }
+        };
+      }
+    });
 
-          observer.unobserve(el); // tik vieną kartą
-        }
-      });
-    },
-    { threshold: 0.15 },
-  );
+    // jei visi paveiksliukai jau užkrauti
+    if (loadedCount === images.length) {
+      revealSection(section);
+    }
+  });
 
-  items.forEach((el) => observer.observe(el));
+  function revealSection(section) {
+    const reveals = section.querySelectorAll(".reveal");
+
+    // animuojame po vieną elementą iš viršaus į apačią
+    reveals.forEach((el, index) => {
+      const delay = 80 * Math.pow(1.75, index); // greitai → lėtai
+      setTimeout(() => el.classList.add("visible"), delay);
+    });
+
+    // scroll animacijoms
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const revealsInside = entry.target.querySelectorAll(
+              ".reveal:not(.visible)",
+            );
+            revealsInside.forEach((el, idx) => {
+              const delay = 80 * Math.pow(1.75, idx);
+              setTimeout(() => el.classList.add("visible"), delay);
+            });
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(section);
+  }
 });
