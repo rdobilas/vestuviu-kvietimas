@@ -40,28 +40,48 @@ function updateTimer() {
 updateTimer();
 setInterval(updateTimer, 1000);
 
-const sections = document.querySelectorAll(".reveal-group");
+// Laukiame, kol visi vaizdai įsikraus
+const images = document.querySelectorAll(".reveal-group img");
+let loadedCount = 0;
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const section = entry.target;
-        const reveals = section.querySelectorAll(".reveal");
+images.forEach((img) => {
+  if (img.complete) {
+    loadedCount++;
+  } else {
+    img.onload = () => {
+      loadedCount++;
+      if (loadedCount === images.length) startReveal();
+    };
+  }
+});
 
-        reveals.forEach((el, index) => {
-          const delay = 80 * Math.pow(1.75, index); // <-- čia "greitai → lėtai"
-          setTimeout(() => {
-            el.classList.add("visible");
-          }, delay);
-        });
+if (loadedCount === images.length) startReveal();
 
-        observer.unobserve(section);
-      }
-    });
-  },
-  { threshold: 0.15 },
-);
+function startReveal() {
+  const sections = document.querySelectorAll(".reveal-group");
 
-// 👉 IMPORTANT: START OBSERVING
-sections.forEach((section) => observer.observe(section));
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const section = entry.target;
+          const reveals = section.querySelectorAll(".reveal");
+
+          reveals.forEach((el, index) => {
+            // "greitai → lėtai" efektas
+            const delay = 80 * Math.pow(1.75, index);
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, delay);
+          });
+
+          observer.unobserve(section);
+        }
+      });
+    },
+    { threshold: 0.15 },
+  );
+
+  // Stebime kiekvieną sekciją
+  sections.forEach((section) => observer.observe(section));
+}
