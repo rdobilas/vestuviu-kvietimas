@@ -22,12 +22,46 @@ function updateTimer() {
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
 
-  document.getElementById("days").textContent = days.toString().padStart(2, "0");
-  document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
-  document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
-  document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+  document.getElementById("days").textContent = days
+    .toString()
+    .padStart(2, "0");
+  document.getElementById("hours").textContent = hours
+    .toString()
+    .padStart(2, "0");
+  document.getElementById("minutes").textContent = minutes
+    .toString()
+    .padStart(2, "0");
+  document.getElementById("seconds").textContent = seconds
+    .toString()
+    .padStart(2, "0");
 }
 
 // start
 updateTimer();
 setInterval(updateTimer, 1000);
+
+const sections = document.querySelectorAll(".reveal-group");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const section = entry.target;
+        const reveals = section.querySelectorAll(".reveal");
+
+        reveals.forEach((el, index) => {
+          const delay = 80 * Math.pow(1.75, index); // <-- čia "greitai → lėtai"
+          setTimeout(() => {
+            el.classList.add("visible");
+          }, delay);
+        });
+
+        observer.unobserve(section);
+      }
+    });
+  },
+  { threshold: 0.15 },
+);
+
+// 👉 IMPORTANT: START OBSERVING
+sections.forEach((section) => observer.observe(section));

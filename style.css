@@ -28,6 +28,20 @@
   font-style: normal;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(-25px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+/* when element becomes visible */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
