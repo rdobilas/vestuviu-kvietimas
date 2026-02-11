@@ -497,6 +497,19 @@ body {
     flex-direction: row;
     align-items: end;
     justify-content: center;
+    cursor: pointer;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .location__images a:hover img {
+    transform: scale(1.02);
+  }
+
+  .location__images a:active img {
+    transform: scale(0.97);
+    filter: brightness(0.95);
   }
 
   .location--church img,
