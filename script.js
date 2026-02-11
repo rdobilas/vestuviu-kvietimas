@@ -40,7 +40,7 @@ function updateTimer() {
 updateTimer();
 setInterval(updateTimer, 1000);
 
-// Laukiame, kol visi vaizdai įsikraus
+// reveal anim script
 const images = document.querySelectorAll(".reveal-group img");
 let loadedCount = 0;
 
@@ -58,30 +58,28 @@ images.forEach((img) => {
 if (loadedCount === images.length) startReveal();
 
 function startReveal() {
-  const sections = document.querySelectorAll(".reveal-group");
+  const items = document.querySelectorAll(".reveal");
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const section = entry.target;
-          const reveals = section.querySelectorAll(".reveal");
+          const el = entry.target;
+          const parent = el.parentElement; // galima daryti delay pagal index
+          const siblings = Array.from(parent.querySelectorAll(".reveal"));
+          const index = siblings.indexOf(el);
 
-          reveals.forEach((el, index) => {
-            // "greitai → lėtai" efektas
-            const delay = 80 * Math.pow(1.75, index);
-            setTimeout(() => {
-              el.classList.add("visible");
-            }, delay);
-          });
+          const delay = 80 * Math.pow(1.75, index); // greitai → lėtai
+          setTimeout(() => {
+            el.classList.add("visible");
+          }, delay);
 
-          observer.unobserve(section);
+          observer.unobserve(el); // tik kartą
         }
       });
     },
     { threshold: 0.15 },
   );
 
-  // Stebime kiekvieną sekciją
-  sections.forEach((section) => observer.observe(section));
+  items.forEach((el) => observer.observe(el));
 }
