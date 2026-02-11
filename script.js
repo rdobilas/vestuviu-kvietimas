@@ -41,40 +41,27 @@ updateTimer();
 setInterval(updateTimer, 1000);
 
 // reveal anim script
-const images = document.querySelectorAll(".reveal-group img");
-let loadedCount = 0;
-
-images.forEach((img) => {
-  if (img.complete) {
-    loadedCount++;
-  } else {
-    img.onload = () => {
-      loadedCount++;
-      if (loadedCount === images.length) startReveal();
-    };
-  }
-});
-
-if (loadedCount === images.length) startReveal();
-
-function startReveal() {
+window.addEventListener("load", () => {
   const items = document.querySelectorAll(".reveal");
 
+  // IntersectionObserver animacijai
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const el = entry.target;
-          const parent = el.parentElement; // galima daryti delay pagal index
+          const parent = el.parentElement;
           const siblings = Array.from(parent.querySelectorAll(".reveal"));
           const index = siblings.indexOf(el);
 
-          const delay = 80 * Math.pow(1.75, index); // greitai → lėtai
+          // Delay efektas: greitai -> lėtai
+          const delay = 80 * Math.pow(1.75, index);
+
           setTimeout(() => {
             el.classList.add("visible");
           }, delay);
 
-          observer.unobserve(el); // tik kartą
+          observer.unobserve(el); // tik vieną kartą
         }
       });
     },
@@ -82,4 +69,4 @@ function startReveal() {
   );
 
   items.forEach((el) => observer.observe(el));
-}
+});

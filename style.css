@@ -29,14 +29,13 @@
 }
 
 .reveal {
-  opacity: 0;
+  opacity: 0; /* vis tiek paslėpta */
   transform: translateY(-25px);
   transition:
     opacity 0.8s ease,
     transform 0.8s ease;
 }
 
-/* when element becomes visible */
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
