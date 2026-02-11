@@ -120,7 +120,7 @@ body {
 .invite {
   position: relative;
   text-align: center;
-  padding: 60px 10px;
+  padding: 80px 10px;
   color: #333;
 
   overflow: hidden;
@@ -227,12 +227,12 @@ body {
 
 .location--church img,
 .location--venue img {
-  width: 70%;
-  max-width: 420px;
+  width: 100%;
+  max-width: 250px;
 }
 
 .location__extra {
-  margin: 0 auto;
+  margin: 20px auto 0;
   width: 100%;
   background-color: #f6f2e9;
   padding: 20px;
@@ -444,6 +444,91 @@ body {
 @media (min-width: 768px) {
   .hero::before {
     transform: scale(1.2) translateY(8%);
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .hero p {
+    font-size: 24px;
+  }
+
+  .hero__title h2 {
+    font-family: "Beautifully Delicious", cursive;
+    font-size: 140px;
+    font-weight: 100;
+    line-height: 80px;
+  }
+
+  .hero__title img {
+    width: 300px;
+    height: auto;
+    display: block;
+    margin: 15px auto 0 auto;
+    transform: translateX(2%);
+  }
+
+  .invite__img {
+  max-width: 480px;
+}
+
+  .location__title {
+    margin-bottom: 35px;
+  }
+
+  .location__title h2 {
+    font-size: 100px;
+  }
+
+  .location__title img {
+    width: 130px;
+    transform: translate(0%, 80%) rotate(-10deg);
+  }
+
+  .location__images {
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+  }
+
+  .location--church img,
+  .location--venue img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .details {
+    font-size: 26px;
+    line-height: 32px;
+    margin-bottom: 30px;
+  }
+
+  .rsvp {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch; /* <-- svarbu */
+    justify-content: center;
+  }
+
+  .rsvp__sea {
+    flex: 1; /* <-- daro lygiai 50% */
+    width: 50%; /* gali likti */
+    position: relative;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .rsvp__picture {
+    flex: 1; /* <-- daro lygiai 50% */
+    width: 50%; /* gali likti */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rsvp__card {
+    width: 100%;
+    max-width: 580px; /* ← padidinam (buvo 480px) */
   }
 }
 
