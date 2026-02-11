@@ -120,7 +120,7 @@ body {
 .invite {
   position: relative;
   text-align: center;
-  padding: 80px 10px;
+  padding: 60px 10px;
   color: #333;
 
   overflow: hidden;
@@ -469,9 +469,12 @@ body {
     transform: translateX(2%);
   }
 
+  .invite {
+  padding: 80px 10px;
+  }
   .invite__img {
-  max-width: 480px;
-}
+    max-width: 480px;
+  }
 
   .location__title {
     margin-bottom: 35px;
