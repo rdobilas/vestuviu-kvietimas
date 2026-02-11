@@ -41,44 +41,59 @@ updateTimer();
 setInterval(updateTimer, 1000);
 
 // reveal anim script
-// === Helper function: animuoja elementus vieną po kito su delay ===
-function animateElements(elements, delayFunc) {
-  elements.forEach((el, index) => {
-    const delay = delayFunc ? delayFunc(index) : index * 150; // pagal funkciją ar default 150ms
-    setTimeout(() => el.classList.add("visible"), delay);
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".reveal-group");
+
+  sections.forEach((section) => {
+    const reveals = section.querySelectorAll(".reveal");
+    const images = section.querySelectorAll("img");
+
+    // funkcija, kuri animuoja elementus su greitai→lėtai efektu
+    function revealElements() {
+      reveals.forEach((el, index) => {
+        const delay = 80 * Math.pow(1.75, index); // greitai → lėtai
+        setTimeout(() => el.classList.add("visible"), delay);
+      });
+    }
+
+    // Funkcija prijungia IntersectionObserver prie sekcijos
+    function observeSection() {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              revealElements();
+              obs.unobserve(entry.target); // paleidžiam tik kartą
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+      observer.observe(section);
+    }
+
+    // Jei sekcijoje yra paveikslėlių – laukiam jų užkrovimo
+    if (images.length > 0) {
+      let loadedCount = 0;
+
+      images.forEach((img) => {
+        if (img.complete) {
+          loadedCount++;
+        } else {
+          img.onload = img.onerror = () => {
+            loadedCount++;
+            if (loadedCount === images.length) {
+              observeSection(); // pradėti stebėti, kai visi paveikslėliai užkrauti
+            }
+          };
+        }
+      });
+
+      // Jei visi paveikslėliai jau užkrauti
+      if (loadedCount === images.length) observeSection();
+    } else {
+      // jei sekcijoje nėra paveikslėlių – galima stebėti iš karto
+      observeSection();
+    }
   });
-}
-
-// === 1️⃣ Pirmo ekrano animacija po pilno load ===
-window.addEventListener("load", () => {
-  const firstSection = document.querySelector(".reveal-group");
-  if (!firstSection) return;
-
-  const firstReveals = firstSection.querySelectorAll(".reveal");
-
-  animateElements(firstReveals, (index) => 80 * Math.pow(1.75, index));
-  // "greitai → lėtai" efektas pirmam ekranui
-});
-
-// === 2️⃣ Kitos sekcijos animacija scroll metu ===
-const observer = new IntersectionObserver(
-  (entries, obs) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const section = entry.target;
-        const reveals = section.querySelectorAll(".reveal");
-
-        animateElements(reveals); // default delay: 150ms
-
-        obs.unobserve(section); // vieną kartą
-      }
-    });
-  },
-  { threshold: 0.15 },
-);
-
-// Pradedame stebėti visas sekcijas, išskyrus pirmą (ji jau animuojama po load)
-document.querySelectorAll(".reveal-group").forEach((section, i) => {
-  if (i === 0) return; // praleidžiame pirmą
-  observer.observe(section);
 });

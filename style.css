@@ -31,18 +31,14 @@
 .reveal {
   opacity: 0;
   transform: translateY(-25px);
-  visibility: hidden; /* užtikrina, kad niekas nemirksėtų prieš animaciją */
   transition:
     opacity 0.8s ease,
-    transform 0.8s ease,
-    visibility 0s linear 0.8s; /* visibility pasikeičia po transition */
+    transform 0.8s ease;
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
-  visibility: visible;
-  transition-delay: 0s; /* matoma iš karto */
 }
 
 * {
