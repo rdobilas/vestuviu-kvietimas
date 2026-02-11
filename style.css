@@ -538,18 +538,18 @@ body {
     max-width: 580px; /* ← padidinam (buvo 480px) */
   }
   .countdown h2 {
-    font-size: 40px;
+    font-size: 36px;
   }
   .time-num {
-    font-size: 40px;
+    font-size: 36px;
   }
 
   .time-label {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .time-separator {
-    font-size: 40px;
+    font-size: 36px;
   }
 }
 
@@ -565,6 +565,21 @@ body {
   .hero__photo {
     max-width: 420px;
     margin: 10px auto;
+  }
+
+  .countdown h2 {
+    font-size: 40px;
+  }
+  .time-num {
+    font-size: 40px;
+  }
+
+  .time-label {
+    font-size: 16px;
+  }
+
+  .time-separator {
+    font-size: 40px;
   }
 }
 
