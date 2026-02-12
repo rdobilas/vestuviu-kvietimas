@@ -403,7 +403,7 @@ body {
 /* APAČIOS FOTO (kol kas mobile centre) */
 .rsvp__picture img {
   width: 85%;
-  max-width: 420px;
+  max-width: 380px;
   display: block;
   margin: 0 auto;
   padding: 40px 0;
@@ -566,6 +566,11 @@ body {
     align-items: center;
     justify-content: center;
   }
+
+  .rsvp__picture img {
+    max-width: 480px;
+  }
+
   .rsvp__card {
     width: 100%;
     max-width: 580px; /* ← padidinam (buvo 480px) */
