@@ -402,8 +402,8 @@ body {
 
 /* APAČIOS FOTO (kol kas mobile centre) */
 .rsvp__picture img {
-  width: 85%;
-  max-width: 380px;
+  width: 70%;
+  max-width: 330px;
   display: block;
   margin: 0 auto;
   padding: 40px 0;
