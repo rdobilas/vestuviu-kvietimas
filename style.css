@@ -41,6 +41,10 @@
   transform: translateY(0);
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -161,7 +165,6 @@ body {
 .invite__img {
   position: relative;
   max-width: 420px;
-  transform: rotate(-1deg);
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -171,6 +174,7 @@ body {
   width: 90%;
   height: auto;
   display: block;
+  transform: rotate(-1deg);
 }
 
 .invite__clippy {
