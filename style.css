@@ -275,56 +275,41 @@ body {
 
 /* 4. RSVP */
 .rsvp {
+  position: relative;
+  text-align: center;
+  padding: 60px 10px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rsvp::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background-image: url("images/rsvp-bg.jpg");
   background-size: cover;
   background-position: center;
-  text-align: center;
-  color: #333;
-}
-
-.rsvp__card-wrapper {
-  position: relative; /* <- čia clippy ir mygtukas prisiriš */
-  width: 90%;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-/* KONTEINERIS */
-.rsvp__sea {
-  position: relative;
-  width: 100%;
-  /* max-width: 420px; */
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden; /* kad fonas neišeitų už konteinerio */
-  padding: 60px 0;
-}
-
-.rsvp__sea::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("images/rsvp-sea.jpg");
-  background-size: cover;
-  background-position: center;
   transform: scale(1.05);
-  z-index: 0;
+  z-index: -1;
 }
 
-/* KORTELĖ ANT VIRŠAUS – rsvp.jpg */
+.rsvp__img {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .rsvp__card {
-  width: 90%; /* ne 100%, kad nesiplėstų per plotį */
-  max-width: 400px; /* apribojimas */
+  width: 90%;
   height: auto;
+  display: block;
   transform: rotate(-1.5deg);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  display: block;
-  margin: 0 auto;
 }
 
 /* CLIPPY PRILIPĘS PRIE KORTELĖS */
@@ -385,7 +370,7 @@ body {
 /* Hover – šiek tiek pakyla / padidėja */
 .rsvp__btn:hover {
   background: var(--btn-hover);
-  transform: translateX(-50%) translateY(-1px) rotate(-1.5deg) scale(1.02);
+  transform: translateX(-50%) translateY(-1px) rotate(-1.5deg) scale(1.05);
   box-shadow:
     0 10px 24px rgba(148, 128, 98, 0.45),
     /* ryškesnis hover */ 0 4px 8px rgba(0, 0, 0, 0.12);
@@ -394,19 +379,10 @@ body {
 /* Active – švelniai nusileidžia ir truputį padidėja */
 .rsvp__btn:active {
   background: var(--btn-active);
-  transform: translateX(-50%) translateY(2px) rotate(-1.5deg) scale(1.05);
+  transform: translateX(-50%) translateY(2px) rotate(-1.5deg) scale(1);
   box-shadow:
     0 4px 12px rgba(148, 128, 98, 0.3),
     /* švelnesnis aktyvus */ 0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
-/* APAČIOS FOTO (kol kas mobile centre) */
-.rsvp__picture img {
-  width: 70%;
-  max-width: 330px;
-  display: block;
-  margin: 0 auto;
-  padding: 40px 0;
 }
 
 /* 5. Countdown */
@@ -543,37 +519,22 @@ body {
     line-height: 32px;
     margin-bottom: 30px;
   }
-
   .rsvp {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch; /* <-- svarbu */
-    justify-content: center;
+    padding: 80px 10px;
   }
-
-  .rsvp__sea {
-    flex: 1; /* <-- daro lygiai 50% */
-    width: 50%; /* gali likti */
-    position: relative;
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-
-  .rsvp__picture {
-    flex: 1; /* <-- daro lygiai 50% */
-    width: 50%; /* gali likti */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .rsvp__picture img {
+  .rsvp__img {
     max-width: 480px;
   }
+  .rsvp__btn {
+    transform: translateX(-50%) rotate(-1.5deg) scale(1.1);
+  }
 
-  .rsvp__card {
-    width: 100%;
-    max-width: 580px; /* ← padidinam (buvo 480px) */
+  .rsvp__btn:hover {
+  transform: translateX(-50%) translateY(-1px) rotate(-1.5deg) scale(1.15);
+  }
+
+  .rsvp__btn:active {
+  transform: translateX(-50%) translateY(2px) rotate(-1.5deg) scale(1.1);
   }
   .countdown h2 {
     font-size: 36px;
