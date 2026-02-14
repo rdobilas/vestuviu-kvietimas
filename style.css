@@ -78,7 +78,7 @@ body {
   background-size: cover;
   background-position: center;
   transform: scale(1.2) translateY(8%);
-  z-index: -1;
+  z-index: -1; 
 }
 
 .hero__title {
@@ -195,7 +195,7 @@ body {
 
 /* 3. Location */
 .location {
-  background-image: url("images/location-bg.png");
+  background-image: url("images/location-bg.jpg");
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -387,7 +387,7 @@ body {
 
 /* 5. Countdown */
 .countdown {
-  background-image: url("images/location-bg.png");
+  background-image: url("images/location-bg.jpg");
   background-size: cover;
   background-position: center;
   text-align: center;
