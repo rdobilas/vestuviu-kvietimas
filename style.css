@@ -78,7 +78,7 @@ body {
   background-size: cover;
   background-position: center;
   transform: scale(1.2) translateY(8%);
-  z-index: -1; 
+  z-index: -1;
 }
 
 .hero__title {
@@ -98,8 +98,8 @@ body {
   width: 150px;
   height: auto;
   display: block;
-  margin: 5px auto 0 auto;
-  transform: translateX(8%);
+  margin: 0px auto 0 auto;
+  transform: translateY(2px) translateX(2px) rotate(-2deg);
 }
 
 .hero__photo {
@@ -212,16 +212,15 @@ body {
   font-size: 60px;
   font-weight: 100;
   line-height: 25px;
-  transform: rotate(-10deg);
+  transform: rotate(-5deg);
 }
 
 .location__title img {
   width: 75px;
   height: auto;
   display: block;
-  margin: 2px auto 0 auto;
-  transform: translate(8%);
-  transform: rotate(-10deg);
+  margin: 0px auto 0 auto;
+  transform: translateY(2px) rotate(-2deg);
 }
 
 .details {
@@ -332,7 +331,7 @@ body {
 /* MYGTUKAS */
 .rsvp__btn {
   position: absolute;
-  bottom: 29%;
+  bottom: 38%;
   left: 50%;
   transform: translateX(-50%) rotate(-1.5deg) scale(1);
 
