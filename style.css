@@ -474,7 +474,6 @@ body {
     height: auto;
     display: block;
     margin: 5px auto 0 auto;
-    transform: translateX(2%);
   }
 
   .hero__verse {
@@ -502,7 +501,7 @@ body {
 
   .location__title img {
     width: 130px;
-    transform: translate(0%, 80%) rotate(-10deg);
+    transform: translate(2px, 80%) rotate(-2deg);
   }
 
   .location__images {
@@ -576,7 +575,6 @@ body {
   .hero__title img {
     width: 300px;
     margin: 15px auto 0 auto;
-    transform: translateX(2%);
   }
 
   .hero__photo {
