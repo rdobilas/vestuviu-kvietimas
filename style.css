@@ -95,11 +95,11 @@ body {
 }
 
 .hero__title img {
-  width: 150px;
+  width: 130px;
   height: auto;
   display: block;
   margin: 0px auto 0 auto;
-  transform: translateY(2px) translateX(2px) rotate(-2deg);
+  transform: translateY(2px) translateX(5px) rotate(-2deg);
 }
 
 .hero__photo {
@@ -331,11 +331,11 @@ body {
 /* MYGTUKAS */
 .rsvp__btn {
   position: absolute;
-  bottom: 38%;
+  bottom: 39%;
   left: 50%;
   transform: translateX(-50%) rotate(-1.5deg) scale(1);
 
-  padding: 12px 22px;
+  padding: 14px 30px;
   font-size: 18px;
 
   --btn-main: #948062;
