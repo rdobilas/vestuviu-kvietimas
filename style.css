@@ -209,7 +209,7 @@ body {
 
 .location__title h2 {
   font-family: "Beautifully Delicious", cursive;
-  font-size: 54px;
+  font-size: 60px;
   font-weight: 100;
   line-height: 25px;
   transform: rotate(-10deg);
@@ -219,16 +219,16 @@ body {
   width: 75px;
   height: auto;
   display: block;
-  margin: 0px auto 0 auto;
-  transform: translateX(8%);
+  margin: 2px auto 0 auto;
+  transform: translate(8%);
   transform: rotate(-10deg);
 }
 
 .details {
   font-family: var(--font-amatic-bold);
-  font-size: 14px;
+  font-size: 18px;
   line-height: 20px;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
 }
 
 .location__images {
@@ -332,7 +332,7 @@ body {
 /* MYGTUKAS */
 .rsvp__btn {
   position: absolute;
-  bottom: 25%;
+  bottom: 29%;
   left: 50%;
   transform: translateX(-50%) rotate(-1.5deg) scale(1);
 
@@ -526,6 +526,7 @@ body {
     font-size: 26px;
     line-height: 32px;
     margin-bottom: 30px;
+    max-width: 600px;
   }
   .rsvp {
     padding: 80px 10px;
