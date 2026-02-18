@@ -204,23 +204,23 @@ body {
 }
 
 .location__title {
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 }
 
 .location__title h2 {
   font-family: "Beautifully Delicious", cursive;
-  font-size: 100px;
+  font-size: 64px;
   font-weight: 100;
   line-height: 25px;
   transform: rotate(-5deg);
 }
 
 .location__title img {
-  width: 130px;
+  width: 80px;
   height: auto;
   display: block;
   margin: 0px auto 0 auto;
-  transform: translate(2px, 80%) rotate(-2deg);
+  transform: translate(2px, 2px) rotate(-2deg);
 }
 
 .details {
