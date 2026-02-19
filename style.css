@@ -331,7 +331,7 @@ body {
 /* MYGTUKAS */
 .rsvp__btn {
   position: absolute;
-  bottom: 36%;
+  bottom: 32.5%;
   left: 50%;
   transform: translateX(-50%) rotate(-1.5deg) scale(1);
 
@@ -533,6 +533,7 @@ body {
     max-width: 480px;
   }
   .rsvp__btn {
+    bottom: 33.5%;
     transform: translateX(-50%) rotate(-1.5deg) scale(1.1);
   }
 
